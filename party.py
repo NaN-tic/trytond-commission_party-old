@@ -33,8 +33,8 @@ class Sale:
         changes = super(Sale, self).on_change_party()
         if self.party and self.party.agents and not self.agent:
             if len(self.party.agents) == 1:
-                changes['agent'] = self.party.agent.id
-                changes['agent.rec_name'] = self.party.agent.rec_name
+                changes['agent'] = self.party.agents[0].id
+                changes['agent.rec_name'] = self.party.agents[0].rec_name
         return changes
 
 
@@ -60,6 +60,6 @@ class Invoice:
         changes = super(Invoice, self).on_change_party()
         if self.party and self.party.agents and not self.agent:
             if len(self.party.agents) == 1:
-                changes['agent'] = self.party.agent.id
-                changes['agent.rec_name'] = self.party.agent.rec_name
+                changes['agent'] = self.party.agents[0].id
+                changes['agent.rec_name'] = self.party.agents[0].rec_name
         return changes
