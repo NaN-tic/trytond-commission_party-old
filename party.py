@@ -42,9 +42,10 @@ class Opportunity:
 
     def _get_sale_opportunity(self):
         sale = super(Opportunity, self)._get_sale_opportunity()
-        if self.party and self.party.agent:
-            sale.agent = self.party.agent
-            sale.on_change_agent()
+        if self.party and self.party.agents:
+            if len(self.party.agents) == 1:
+                sale.agent = self.party.agents[0]
+                sale.on_change_agent()
         return sale
 
 
