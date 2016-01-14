@@ -30,11 +30,12 @@ class Sale:
 
     @fields.depends('agent', 'party')
     def on_change_party(self):
-        self.agent = None
-        super(Sale, self).on_change_party()
+        changes = super(Sale, self).on_change_party()
         if self.party and self.party.agents and not self.agent:
             if len(self.party.agents) == 1:
-                self.agent = self.party.agents[0]
+                changes['agent'] = self.party.agent.id
+                changes['agent.rec_name'] = self.party.agent.rec_name
+        return changes
 
 
 class Opportunity:
@@ -42,9 +43,12 @@ class Opportunity:
 
     def _get_sale_opportunity(self):
         sale = super(Opportunity, self)._get_sale_opportunity()
-        if self.party and self.party.agent:
-            sale.agent = self.party.agent
-            sale.on_change_agent()
+        if self.party and self.party.agents:
+            if len(self.party.agents) == 1: 
+                sale.agent = self.party.agents[0]
+                if hasattr(sale, 'on_change_agent'):
+                    for k, v in sale.on_change_agent().iteritems():
+                        setattr(sale, k, v)
         return sale
 
 
@@ -53,8 +57,9 @@ class Invoice:
 
     @fields.depends('agent', 'party')
     def on_change_party(self):
-        self.agent = None
-        super(Invoice, self).on_change_party()
+        changes = super(Invoice, self).on_change_party()
         if self.party and self.party.agents and not self.agent:
             if len(self.party.agents) == 1:
-                self.agent = self.party.agents[0]
+                changes['agent'] = self.party.agent.id
+                changes['agent.rec_name'] = self.party.agent.rec_name
+        return changes
