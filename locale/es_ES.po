@@ -1,0 +1,51 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:party-commission.agent,agent:"
+msgid "Agent"
+msgstr "Agente"
+
+msgctxt "field:party-commission.agent,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:party-commission.agent,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:party-commission.agent,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:party-commission.agent,party:"
+msgid "Party"
+msgstr "Tercero"
+
+msgctxt "field:party-commission.agent,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party-commission.agent,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:party-commission.agent,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:party.party,agents:"
+msgid "Agents"
+msgstr "Agentes"
+
+msgctxt "help:party.party,agents:"
+msgid "Agents where this party will be related."
+msgstr "Agentes relacionado con este tercero."
+
+msgctxt "model:party-commission.agent,name:"
+msgid "Party - Commission Agent"
+msgstr "Tercero - Agente comisiones"
+
+msgctxt "view:party.party:"
+msgid "Commissions"
+msgstr "Comisiones"
