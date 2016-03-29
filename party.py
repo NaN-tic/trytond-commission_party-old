@@ -5,10 +5,10 @@ from trytond.model import fields, ModelSQL
 from trytond.pool import PoolMeta
 
 __all__ = ['Party', 'PartyAgent', 'Invoice', 'Sale', 'Opportunity']
-__metaclass__ = PoolMeta
 
 
 class Party:
+    __metaclass__ = PoolMeta
     __name__ = 'party.party'
     agents = fields.Many2Many('party-commission.agent',
             'party', 'agent', 'Agents',
@@ -26,6 +26,7 @@ class PartyAgent(ModelSQL):
 
 
 class Sale:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.sale'
 
     @fields.depends('agent', 'party')
@@ -38,6 +39,7 @@ class Sale:
 
 
 class Opportunity:
+    __metaclass__ = PoolMeta
     __name__ = 'sale.opportunity'
 
     def _get_sale_opportunity(self):
@@ -50,6 +52,7 @@ class Opportunity:
 
 
 class Invoice:
+    __metaclass__ = PoolMeta
     __name__ = 'account.invoice'
 
     @fields.depends('agent', 'party')
